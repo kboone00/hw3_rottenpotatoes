@@ -15,8 +15,12 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  flunk "Unimplemented"
+  content = page.body.split(e1)
+  assert content.length == 3
+  content = content[2].split(e2)
+  assert content.length == 3
 end
+
 
 # Make it easier to express checking or unchecking several boxes at once
 #  "When I uncheck the following ratings: PG, G, R"
